@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program>
+    <func name="facc">
+        <args>
+            <arg name="i" type="int"/>
+            <returns type="int"/>
+        </args>
+        <body>
+            <switch>
+                <if>
+                    <cond>
+                        <lt>
+                            <var name="i"/>
+                            <int>1</int>
+                        </lt>
+                    </cond>
+                    <then>
+                        <return>
+                            <int>1</int>
+                        </return>
+                    </then>
+                </if>
+                <else>
+                    <then>
+                        <return>
+                            <mul>
+                                <var name="i"/>
+                                <call name="facc">
+                                    <sub>
+                                        <var name="i"/>
+                                        <int>1</int>
+                                    </sub>
+                                </call>
+                            </mul>
+                        </return>
+                    </then>
+                </else>
+            </switch>
+        </body>
+    </func>
+
+    <for name="i" from="1" to="10">
+        <body>
+            <output>
+                <call name="facc">
+                    <var name="i"/>
+                </call>
+            </output>
+        </body>
+    </for>
+</program>
